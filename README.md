@@ -342,3 +342,19 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+## Composition - section 40 - Card composition
+
+
+    function Card(props) {
+
+        const classes = 'card ' + props.className;
+        return(
+            <div className={classes}>
+                {props.children}
+            </div>
+        );
+    };
+
+Note: Using **{props.children}**
