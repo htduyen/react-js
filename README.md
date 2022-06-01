@@ -358,3 +358,26 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
     };
 
 Note: Using **{props.children}**
+
+## userState in hook
+
+    const [userInput, setUserInput] = useState({
+        enterTitle: "",
+        enterAmount: "",
+        enterDate: "",
+    });
+
+    const titleChangeHandler = (event) => {
+        // setEnterTitle(event.target.value)
+        
+        // Opt 2
+        // setUserInput({
+        //   ...userInput,
+        //   enterTitle: event.target.value,
+        // });
+
+        //Opt 3: Good way
+        // setUserInput((prevState) => {
+        //   return {...prevState, enterTitle: event.target.value}
+        // })
+    };

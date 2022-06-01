@@ -1,5 +1,7 @@
+// import React from "react";
 import "./App.css";
-import Expenses from "./components/Expenses";
+import Expenses from "./components/Expense/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 function App() {
   const expenses = [
@@ -24,9 +26,15 @@ function App() {
     },
   ];
 
+  // Old version
+  // return React.createElement(
+  //   'div', {className : 'App'}, 
+  //   React.createElement('h3', {}, "Let get statrted"),
+  //   React.createElement(Expenses, {items: expenses}, {})
+  // )
   return (
-    <div className="App">
-      <h3>Let get statrted </h3>
+    <div>
+      <NewExpense/>
       <Expenses items={expenses}/>
     </div>
   );
