@@ -48,24 +48,22 @@ const ExpenseForm = (props) => {
 
     const expenseData = {
       title: enterTitle,
-      amount: enterAmount,
+      amount: +enterAmount,
       date: new Date(enterDate)
     }
-    // console.log(expenseData);
-    // 
-    // Important
-    // 
-    props.onSaveExpenseData(expenseData);
     setEnterTitle('');
     setEnterAmount('');
     setEnterDate('');
+
+    // console.log('onSaveExpenseData');
+    props.onSaveExpenseData(expenseData);
   }
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" onChange={titleChangeHandler} value={enterTitle}></input>
+          <input type="text" value={enterTitle} onChange={titleChangeHandler}></input>
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
@@ -73,8 +71,8 @@ const ExpenseForm = (props) => {
             type="number"
             min="0.01"
             step="0.02"
-            onChange={amountChangeHandler}
             value={enterAmount}
+            onChange={amountChangeHandler}
           ></input>
         </div>
         <div className="new-expense__control">
@@ -83,12 +81,13 @@ const ExpenseForm = (props) => {
             type="date"
             min="2020-01-01"
             max="2022-12-31"
-            onChange={dateChangeHandler}
             value={enterDate}
+            onChange={dateChangeHandler}
           ></input>
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={props.onCancel}>Cancel</button>
         <button type="submit">Add</button>
       </div>
     </form>
