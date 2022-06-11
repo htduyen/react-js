@@ -434,4 +434,8 @@ Note: Using **{props.children}**
       <Button type="submit">Add Goal</Button>
     </form>
 
+## Debug React
+
+    + Using **React Developer Tools**
+    + Debug on browser as Javascript
 
