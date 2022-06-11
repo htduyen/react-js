@@ -384,23 +384,37 @@ Note: Using **{props.children}**
     
 ## Style in CSS
 
-    + Style.css:
+    **styled-components** allows you to write actual CSS code to style your components. It also removes the mapping between components and styles – using components as a low-level styling construct could not be easier!
     
-        .form-control.invalid input {
-          color: red;
-          background: red;
-        }
 
-        .form-control.invalid label {
-          color: red;
-        }
     + component.js:
     
+        const FormControl = styled.div`
+          margin: 0.5rem 0;
+
+          & label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+            color: ${props => (props.invalid ? 'red' : 'black')};
+          }
+
+          & input {
+            display: block;
+            width: 100%;
+            border: 1px solid ${(props) => (props.invalid ? "red" : "#ccc")};
+            backgroud: ${(props) => (props.invalid ? "#ffd7d7" : "transparent")};
+            font: inherit;
+            line-height: 1.5rem;
+            padding: 0 0.25rem;
+          }
+        `;
+    
         <form onSubmit={formSubmitHandler}>
-          <div className={`form-control ${!isValid ? "invalid" : ''}`}>
+          <FormControl invalid={!isValid}>
             <label>Course Goal</label>
             <input type="text" onChange={goalInputChangeHandler} />
-          </div>
+          </FormControl>
           <Button type="submit">Add Goal</Button>
         </form>
 
