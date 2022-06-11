@@ -384,37 +384,54 @@ Note: Using **{props.children}**
     
 ## Style in CSS
 
-    **styled-components** allows you to write actual CSS code to style your components. It also removes the mapping between components and styles – using components as a low-level styling construct could not be easier!
+
+[**styled-components**](https://styled-components.com/docs/basics): allows you to write actual CSS code to style your components. It also removes the mapping between components and styles – using components as a low-level styling construct could not be easier!
+
+[**CSS module**](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/): This project supports CSS Modules alongside regular stylesheets using the [name].module.css file naming convention.
     
 
-    + component.js:
++ styled-components:
     
-        const FormControl = styled.div`
-          margin: 0.5rem 0;
+    const FormControl = styled.div`
+      margin: 0.5rem 0;
 
-          & label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 0.5rem;
-            color: ${props => (props.invalid ? 'red' : 'black')};
-          }
+      & label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 0.5rem;
+        color: ${props => (props.invalid ? 'red' : 'black')};
+      }
 
-          & input {
-            display: block;
-            width: 100%;
-            border: 1px solid ${(props) => (props.invalid ? "red" : "#ccc")};
-            backgroud: ${(props) => (props.invalid ? "#ffd7d7" : "transparent")};
-            font: inherit;
-            line-height: 1.5rem;
-            padding: 0 0.25rem;
-          }
-        `;
+      & input {
+        display: block;
+        width: 100%;
+        border: 1px solid ${(props) => (props.invalid ? "red" : "#ccc")};
+        backgroud: ${(props) => (props.invalid ? "#ffd7d7" : "transparent")};
+        font: inherit;
+        line-height: 1.5rem;
+        padding: 0 0.25rem;
+      }
+    `;
+
+    <form onSubmit={formSubmitHandler}>
+      <FormControl invalid={!isValid}>
+        <label>Course Goal</label>
+        <input type="text" onChange={goalInputChangeHandler} />
+      </FormControl>
+      <Button type="submit">Add Goal</Button>
+    </form>
+
++ CSS module:
+
+    import styles from "./CourseInput.module.css";
     
-        <form onSubmit={formSubmitHandler}>
-          <FormControl invalid={!isValid}>
-            <label>Course Goal</label>
-            <input type="text" onChange={goalInputChangeHandler} />
-          </FormControl>
-          <Button type="submit">Add Goal</Button>
-        </form>
+    <form onSubmit={formSubmitHandler}>
+      <div
+        className={`${styles["form-control"]} ${!isValid && styles.invalid}`}
+      >
+        <label>Course Goal</label>
+        <input type="text" onChange={goalInputChangeHandler} />
+      </div>
+      <Button type="submit">Add Goal</Button>
+    </form>
 
