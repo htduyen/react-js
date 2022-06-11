@@ -381,3 +381,26 @@ Note: Using **{props.children}**
         //   return {...prevState, enterTitle: event.target.value}
         // })
     };
+    
+## Style in CSS
+
+    + Style.css:
+    
+        .form-control.invalid input {
+          color: red;
+          background: red;
+        }
+
+        .form-control.invalid label {
+          color: red;
+        }
+    + component.js:
+    
+        <form onSubmit={formSubmitHandler}>
+          <div className={`form-control ${!isValid ? "invalid" : ''}`}>
+            <label>Course Goal</label>
+            <input type="text" onChange={goalInputChangeHandler} />
+          </div>
+          <Button type="submit">Add Goal</Button>
+        </form>
+
