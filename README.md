@@ -390,18 +390,16 @@ Note: Using **{props.children}**
 [**CSS module**](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/): This project supports CSS Modules alongside regular stylesheets using the [name].module.css file naming convention.
     
 
-+ styled-components:
+   + styled-components:
     
     const FormControl = styled.div`
       margin: 0.5rem 0;
-
       & label {
         font-weight: bold;
         display: block;
         margin-bottom: 0.5rem;
         color: ${props => (props.invalid ? 'red' : 'black')};
       }
-
       & input {
         display: block;
         width: 100%;
@@ -421,7 +419,8 @@ Note: Using **{props.children}**
       <Button type="submit">Add Goal</Button>
     </form>
 
-+ CSS module:
+
+   + CSS module:
 
     import styles from "./CourseInput.module.css";
     
@@ -434,4 +433,5 @@ Note: Using **{props.children}**
       </div>
       <Button type="submit">Add Goal</Button>
     </form>
+
 
